@@ -1,0 +1,137 @@
+@Author: Aryan Dua 2020CS50475
+
+							      PROGRAM REPORT - Stage 2
+
+
+
+								     #Objective
+To make a function to merge two sorted lists of strings, maintaining the sorting order. 
+
+
+
+					                           #Assumptions
+1. ARMSim version - 2.0.1(4), Output is displayed through stdout using Angel SWI Instructions. 
+2. The lists given are sorted(They will anyways be sorted in the next stage)
+3. The user conforms to the input instructions.
+
+
+
+
+ 								#Instructions to run
+
+1. Load all the files (main.s, io.s, math.s, merge.s, print.s, compare.s, case.s, input_stage2.s) in ARMSim# by selecting the Load Multiple option.
+2. 'main.s' should be loaded on top.
+3. After successful loading of file, Click on the run button.
+4. In the stdin/stdout window, please enter the values according to the prompt given and press ENTER KEY after each line.
+5. Please avoid backspaces, they may cause an error.
+6. The output is the sorted list.
+7. When the remove duplicates option is selected, the user is not allowed to enter 2 duplicate values in the SAME list. They have to be in different lists.(As mentioned by Anshul sir on piazza)
+
+
+
+
+							#Implementation/Design Description: - 
+1. The input needs to be entered as and when the stdin prompts. The first prompt will be for the removal of duplicate entries. 1 corresponds to removing them. The second prompt is for case-sensitive and case-insensitive, this is like how it was in stage 1. Then we enter the strings of the two lists one by one, after the prompt.
+
+2. I have stored the pointers of all the strings in the first list in list1, and those of the second in list2. They are declared as .space 10000
+
+3. The merged list is stored in list and list is declared as .space 20000.
+
+4. After the result of each comparison, I either branch to append the first string to the final list or the second list, depending on the comparison result.
+
+5. The merging ends when both the lists have exhausted all the elements. (The list pointer corresponding to the 'current' element reaches the end).
+
+6. In the end I print n+m number of required elements, where n and m are the number of elements in the original given lists. Note that the number will be lesser than n+m in case of removing duplicates. This case has been taken care of accordingly.
+
+7. Finally the program terminates when I have printed the required number of strings in dictionary order.
+
+8. As informed in class, I have used the input output files from one of my batchmates. Prof. Anshul had told us that it is allowed as long as we mention the creator of the file. I have mentioned the name in the file itself. The strlen used is from UsefulFunctions.s
+
+9. In case of case sensitive input, please not that a>A, so in order to provide a sorted list, please ensure that this property is followed, otherwise it may lead to wrong outputs if the original list is not sorted. For example, [an Are] is a wrong list and should be [Are an] instead.
+
+
+
+								#Testcases and Results
+####It is vertical in the actual test, but shown horizontal here to save space.
+The program also takes list size input, but since that is redundant to show here, I have skipped it.
+1. Duplicate removal	:0
+   Case-sensitive	:1
+   list1		:a b b
+   list2		:b c
+   sorted list 	:a b b b c
+   size		:5
+
+2. Duplicate removal	:1
+   Case-sensitive	:0
+   list1		:a b s z
+   list2		:c e x
+   sorted list 	:a b c e s x z
+   size		:7
+   
+3. Duplicate removal	:0
+   Case-sensitive	:1
+   list1		:Ab ac
+   list2		:AC ab
+   sorted list 	:AC Ab ab ac
+   size		:4
+   
+4. Duplicate removal	:1
+   Case-sensitive	:0
+   list1		:Ab ac
+   list2		:ab AC
+   sorted list 	:Ab ac
+   size		:2
+   
+5. Duplicate removal	:1
+   Case-sensitive	:0
+   list1		:a b c
+   list2		:b c d
+   sorted list 	:a b c d
+   size		:4
+  
+6. Duplicate removal	:1
+   Case-sensitive	:1
+   list1		:Aryan Dua
+   list2		:An Aryan Assignment
+   sorted list 	:An Aryan Dua Assignment
+   size		:4
+   
+7. Duplicate removal	:0
+   Case-sensitive	:0
+   list1		:abc ABC
+   list2		:Abc aBC
+   sorted list 	:abc ABC Abc aBC
+   size		:4
+   
+8. Duplicate removal	:1
+   Case-sensitive	:0
+   list1		:hello
+   list2		:helloram
+   sorted list 	:hello helloram
+   size		:2
+   
+9. Duplicate removal	:1
+   Case-sensitive	:1
+   list1		:Hello
+   list2		:ello
+   sorted list 	:Hello ello
+   size		:2
+   
+10. Duplicate removal	:0
+   Case-sensitive	:1
+   list1		:Hi My Name you
+   list2		:Aryan Good hi is see to
+   sorted list 	:Aryan Good Hi My Name hi is see to you
+   size		:10
+   
+All the 4 possibilities of duplicate, case sensitive options have been shown.
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

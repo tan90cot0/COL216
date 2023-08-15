@@ -1,0 +1,52 @@
+@Author: Aryan Dua 2020CS50475
+
+								   PROGRAM REPORT
+ 								#Instructions to run
+
+1. Load all the files (main.s, io.s, math.s) in ARMSim# by selecting the Load Multiple option.
+2. 'main.s' should be loaded on top.
+3. After successful loading of file, Click on the run button.
+4. In the stdin/stdout window, please enter the values according to the format given below and press ENTER KEY after each line.
+5. Please avoid backspaces, they may cause an error.
+6. The output is the comparison result
+
+ 								#Program Description
+ 
+1. The input needs to be entered in this format:
+	string1
+	string2
+	comparison mode{0,1}
+   Value 0 : case-insensitive comparison
+   Value 1 : case-sensitive comparison
+   
+2.  In the 'main.s' file, in .data section, 's1' and 's2' are the spaces assigned for storing the two strings. 'greater', 'lesser', 'equal' are the output messages to be displayed.
+
+3. r5 and r6 have dual roles- they point to the respective strings, as well as the 'i'th character.(at different places in the program)
+
+4. r11 contains the value 0 or 1, for the comparison mode.
+
+4. Finally on the basis of the value stored in r2, the appropriate mode of comparison is chosen. (In case of case-insensitive, I am converting all uppercase alphabets to lowercase)
+
+5. The comparison algorithm is divided into various branches, beginning at the .compare branch.
+
+6. Output is displayed through stdout using Angel SWI Instructions. The output is displayed with respect to the first string.
+
+7. As informed in class, I have used the input output files from one of my batchmates. Prof. Anshul had told us that it is allowed as long as we mention the creator of the file. I have mentioned the name in the file itself. 
+
+								#Test-cases tried by me
+
+1. If first string is "Hello", second string is "ello"
+   case-sensitive result(1): "First string is lesser than the second string"
+   case-insensitive result(0): "First string is greater than the second string"
+   
+2. If first string is "ARYAN", second string is "aryaN"
+   case-sensitive result(1): "First string is lesser than the second string"
+   case-insensitive result(0): "Both the strings are equal"
+   
+3. If first string is "xYz", second string is "XYz"
+   case-sensitive result(1): "First string is greater than the second string"
+   case-insensitive result(0): "Both the strings are equal"   
+
+4. If first string is "AbcDe", second string is "abcd"
+   case-sensitive result(1): "First string is lesser than the second string"
+   case-insensitive result(0): "First string is greater than the second string"
