@@ -1,0 +1,68 @@
+.global input
+.extern strlen
+.align 2
+.text
+input:	stmfd sp!, {lr}
+
+	mov r5,#9				@len
+	mov r10, #1				@case
+	mov r3, #1				@duplicates
+	
+	ldr r1,=list
+
+	ldr r0,=s1
+	str r0,[r1]
+	add r1,r1,#4
+	
+	ldr r0,=s2
+	str r0,[r1]
+	add r1,r1,#4
+	
+	ldr r0,=s3
+	str r0,[r1]
+	add r1,r1,#4
+	
+	ldr r0,=s4
+	str r0,[r1]
+	add r1,r1,#4
+	
+	ldr r0,=s5
+	str r0,[r1]
+	add r1,r1,#4
+	
+	ldr r0,=s6
+	str r0,[r1]
+	add r1,r1,#4
+	
+	ldr r0,=s7
+	str r0,[r1]
+	add r1,r1,#4
+	
+	ldr r0,=s8
+	str r0,[r1]
+	add r1,r1,#4
+	
+	ldr r0,=s9
+	str r0,[r1]
+	
+	ldmfd sp!,{pc}
+	
+	
+.data
+operands: .word 0, 0, 0
+s1: .ascii "a\n\0"
+s2: .ascii "a\n\0"
+s3: .ascii "a\n\0"
+s4: .ascii "a\n\0"
+s5: .ascii "a\n\0"
+s6: .ascii "a\n\0"
+s7: .ascii "a\n\0"
+s8: .ascii "a\n\0"
+s9: .ascii "a\n\0"
+l1: .ascii "Enter list 1\n\0"
+l2: .ascii "Enter list 2\n\0"
+len1: .ascii "Enter the length of list 1\n\0"
+len2: .ascii "Enter the length of list 2\n\0"
+choice: .ascii "Enter 1 for case sensitive comparison and 0 for case insensitive\n\0"
+
+.end

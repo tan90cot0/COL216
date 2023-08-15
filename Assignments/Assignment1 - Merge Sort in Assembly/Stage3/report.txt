@@ -1,0 +1,116 @@
+@Author: Aryan Dua 2020CS50475
+
+							      PROGRAM REPORT - Stage 3
+
+								     #Objective
+To make a function to merge sort a list of strings. 
+
+
+
+					                           #Assumptions
+1. ARMSim version - 2.0.1(4), Output is displayed through stdout using Angel SWI Instructions. 
+3. The user conforms to the input instructions.
+
+
+
+
+ 								#Instructions to run
+
+1. Load all the files (main.s, io.s, math.s, merge.s, print.s, compare.s, case.s, input_stage2.s) in ARMSim# by selecting the Load Multiple option.
+2. 'main.s' should be loaded on top.
+3. After successful loading of file, Click on the run button.
+4. In the stdin/stdout window, please enter the values according to the prompt given and press ENTER KEY after each line.
+5. Please avoid backspaces, they may cause an error.
+6. The output is the sorted list.
+7. When the remove duplicates option is selected, the user is not allowed to enter 2 duplicate values in the SAME list. They have to be in different lists.(As mentioned by Anshul sir on piazza)
+
+
+
+
+							#Implementation/Design Description: - 
+1. The input needs to be entered as and when the stdin prompts. The first prompt will be for the length of the list. The second prompt is for case-sensitive and case-insensitive, this is like how it was in stage 1. The third prompt is for removing duplicate entries. 1 corresponds to removing them.  Then we enter the strings one by one, after the prompt.
+
+2. I have stored the pointers of all the strings in "list".
+
+3. I have an in-place recursive merge sort algorithm set in place. Each time I call the sort function I gave it a list pointer and a length input. Each time I call the merge function, I give it 2 list pointers and 2 length inputs.
+
+4. The sorting and merging ends when the code in the sort block is complete(no more recursive calls).
+
+5. In the end I print n number of required elements, where n is the number of elements in the original list. Note that the number will be lesser than n in case of removing duplicates. This case has been taken care of accordingly.
+
+6. Finally the program terminates when I have printed the required number of strings in dictionary order.
+
+8. As informed in class, I have used the input output files from one of my batchmates. Prof. Anshul had told us that it is allowed as long as we mention the creator of the file. I have mentioned the name in the file itself. The strlen used is from UsefulFunctions.s
+
+
+
+								#Testcases and Results
+####It is vertical in the actual test, but shown horizontal here to save space.
+The program also takes list size input, but since that is redundant to show here, I have skipped it.
+1. Duplicate removal	:0
+   Case-sensitive	:1
+   list		:abCD AbCd ABcd aBcD AbcD aBCd
+   sorted list 	:ABcd AbCd AbcD aBcD aBcd abCD
+   size		:6
+
+2. Duplicate removal	:1
+   Case-sensitive	:0
+   list		:abCD AbCd ABcd aBcD AbcD aBCd
+   sorted list 	:aBCd
+   size		:1
+   
+3. Duplicate removal	:0
+   Case-sensitive	:1
+   list		:inky Pinky Ponky
+   sorted list 	:Pinky Ponky inky
+   size		:3
+   
+4. Duplicate removal	:1
+   Case-sensitive	:0
+   list		:aryan, Aryan, Aryan Dua
+   sorted list 	:Aryan, Aryan Dua
+   size		:2
+   
+5. Duplicate removal	:1
+   Case-sensitive	:0
+   list		:a b a b a b a
+   sorted list 	:a b
+   size		:2
+  
+6. Duplicate removal	:0
+   Case-sensitive	:0
+   list		:b a a a a a a a a a
+   sorted list 	:a a a a a a a a a b
+   size		:10
+   
+7. Duplicate removal	:0
+   Case-sensitive	:0
+   list		:a b a b a b a
+   sorted list 	:a a a a b b b
+   size		:7
+   
+8. Duplicate removal	:1
+   Case-sensitive	:0
+   list		:b a a a a a a a a a
+   sorted list 	:a b
+   size		:2
+   
+9. Duplicate removal	:1
+   Case-sensitive	:1
+   list		:hi hi bi di gi fi psi
+   sorted list 	:bi di fi gi hi psi
+   size		:6
+   
+10. Duplicate removal	:1
+   Case-sensitive	:1
+   list		:a A a A a a A A A a
+   sorted list 	:A a
+   size		:2
+   
+11. Duplicate removal	:0
+   Case-sensitive	:1
+   list		:a a a a a a a a a a
+   sorted list 	:a a a a a a a a a a 
+   size		:10
+   
+All the 4 possibilities of duplicate, case sensitive options have been shown.
